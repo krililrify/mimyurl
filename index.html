@@ -32,6 +32,6 @@ a{color:inherit}.wrap{width:min(100% - 48px,980px);margin:auto;padding:42px 0 38
 </main>
 <script>
 (()=>{const track=document.getElementById('track'),slides=[...track.children],dots=[...document.querySelectorAll('.dot')],carousel=document.getElementById('carousel');let index=0,timer;function show(n){index=(n+slides.length)%slides.length;track.style.transform=`translateX(-${index*100}%)`;dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===index)))}function start(){clearInterval(timer);timer=setInterval(()=>show(index+1),4500)}document.getElementById('prev').addEventListener('click',()=>{show(index-1);start()});document.getElementById('next').addEventListener('click',()=>{show(index+1);start()});dots.forEach((d,i)=>d.addEventListener('click',()=>{show(i);start()}));carousel.addEventListener('mouseenter',()=>clearInterval(timer));carousel.addEventListener('mouseleave',start);carousel.addEventListener('focusin',()=>clearInterval(timer));carousel.addEventListener('focusout',start);start()})();
-</script>
+</script><script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="6fc577d2-f80b-43ec-b12c-9683d78e30c5";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </body>
 </html>
