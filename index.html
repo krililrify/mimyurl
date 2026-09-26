@@ -14,7 +14,7 @@ a{color:inherit}.wrap{width:min(100% - 48px,980px);margin:auto;padding:42px 0 38
 <body>
 <main class="wrap">
   <header class="top"><a class="brand" href="#top" style="text-decoration:none"><span class="brand-icon">🌾</span>米麦小卖部</a><span class="pill">✨ 常用入口</span></header>
-  <section class="hero" id="top"><div class="eyebrow">WELCOME · MIMY</div><h1>好物与入口<span>一页直达</span> ✨</h1><p>欢迎来到米麦小卖部，逛逛近期热销商品或前往常用服务。</p><span class="domain">🔖 建议收藏 ios.mimy.cc</span></section>
+  <section class="hero" id="top"><div class="eyebrow">WELCOME · MIMY</div><h1>好物与入口，<span>一页直达</span> ✨</h1><p>欢迎来到米麦小卖部，逛逛近期热销商品或前往常用服务。</p><span class="domain">🔖 建议收藏 ios.mimy.cc</span></section>
   <section aria-labelledby="hot-title"><div class="section-title"><h2 id="hot-title">🔥 热销推荐</h2><span>自动轮播 · 点击查看详情</span></div>
     <div class="carousel" id="carousel"><div class="track" id="track">
       <a class="slide" href="https://ios.mimy.uk/item/23" target="_blank" rel="noopener noreferrer"><div class="slide-copy"><span class="tag">🔥 人气推荐</span><h3>美区🆔 · 已购小火箭号</h3><p>查看商品详情，了解当前可选内容与说明。</p></div><span class="cta">立即查看 ↗</span></a>
@@ -32,6 +32,6 @@ a{color:inherit}.wrap{width:min(100% - 48px,980px);margin:auto;padding:42px 0 38
 </main>
 <script>
 (()=>{const track=document.getElementById('track'),slides=[...track.children],dots=[...document.querySelectorAll('.dot')],carousel=document.getElementById('carousel');let index=0,timer;function show(n){index=(n+slides.length)%slides.length;track.style.transform=`translateX(-${index*100}%)`;dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===index)))}function start(){clearInterval(timer);timer=setInterval(()=>show(index+1),4500)}document.getElementById('prev').addEventListener('click',()=>{show(index-1);start()});document.getElementById('next').addEventListener('click',()=>{show(index+1);start()});dots.forEach((d,i)=>d.addEventListener('click',()=>{show(i);start()}));carousel.addEventListener('mouseenter',()=>clearInterval(timer));carousel.addEventListener('mouseleave',start);carousel.addEventListener('focusin',()=>clearInterval(timer));carousel.addEventListener('focusout',start);start()})();
-</script><script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="6fc577d2-f80b-43ec-b12c-9683d78e30c5";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+</script>
 </body>
 </html>
