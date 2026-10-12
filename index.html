@@ -1,11 +1,10 @@
-
 <!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#eef5fb">
-<title>米麦小卖部 · 常用入口</title>
+<title>米麦小卖部 · 商城入口</title>
 
 <style>
 :root{color-scheme:light;--bg:#eef5fb;--panel:rgba(255,255,255,.82);--line:rgba(48,91,130,.14);--text:#15283d;--muted:#647991;--mint:#087eae;--orange:#ffbd76}
@@ -16,9 +15,14 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.28;ba
 a{color:inherit}
 .wrap{width:min(100% - 48px,980px);margin:auto;padding:42px 0 38px;position:relative}
 .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:72px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:750;letter-spacing:.02em;font-size:18px}
-.brand-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,#b9f5e5,#87c9ff);color:#14271e;font-size:24px;box-shadow:0 8px 28px #4aa9ce35}
-.pill{border:1px solid var(--line);border-radius:99px;padding:9px 15px;color:#58728d;font-size:14px;letter-spacing:.04em;background:#ffffffa8}
+.brand{display:flex;align-items:center;gap:12px;font-weight:750;letter-spacing:.02em;font-size:18px;text-decoration:none}
+/* 支持真实图片LOGO容器 */
+.brand-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:#ffffff;color:#087eae;font-size:14px;font-weight:700;letter-spacing:.02em;border:1px solid rgba(8,126,174,.18);box-shadow:0 8px 28px #4aa9ce25;overflow:hidden;transition:transform .2s ease}
+.brand-icon img{width:100%;height:100%;object-fit:cover;display:block}
+.brand:hover .brand-icon{transform:scale(1.04)}
+
+.pill{border:1px solid var(--line);border-radius:99px;padding:9px 16px;color:#087eae;font-size:14px;font-weight:600;letter-spacing:.04em;background:#ffffffc7;display:inline-flex;align-items:center;gap:6px;text-decoration:none;box-shadow:0 4px 14px rgba(8,126,174,0.08);transition:all .2s ease}
+.pill:hover{background:#ffffff;border-color:#59b9c3;transform:translateY(-1px);box-shadow:0 6px 18px rgba(8,126,174,0.15)}
 .hero{text-align:center;margin-bottom:45px}
 .eyebrow{color:#0988a8;font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
 .hero h1{font-size:clamp(42px,7vw,68px);line-height:1.18;letter-spacing:-.04em;margin:18px 0 17px}
@@ -29,33 +33,37 @@ a{color:inherit}
 .section-title h2{font-size:23px;margin:0}
 .section-title span{color:var(--muted);font-size:14px}
 .carousel{overflow:hidden;border-radius:27px;border:1px solid #d4e3f0;background:radial-gradient(ellipse at 90% 0%,#d2f5ef,transparent 42%),linear-gradient(120deg,#fff,#eaf4ff 70%,#f7fbff);box-shadow:0 22px 58px #315e871e,inset 0 1px #ffffff}
-.track{display:flex;transition:transform .55s cubic-bezier(.2,.75,.25,1)}
+.track{display:flex;transition:transform .55s cubic-bezier(.2,.75,.25,1);will-change:transform}
 .slide{min-width:100%;padding:35px 40px 25px;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:245px;text-decoration:none}
 .slide-copy{min-width:0}
 .tag{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:99px;background:#0b9b9410;color:#087f86;font-size:13px;font-weight:700}
 .slide h3{font-size:clamp(25px,4vw,36px);margin:17px 0 9px;letter-spacing:-.02em}
 .slide p{margin:0;color:#61788d;font-size:16px;line-height:1.7}
-.cta{flex:none;display:inline-flex;align-items:center;gap:8px;padding:14px 19px;border-radius:14px;background:linear-gradient(120deg,#087eae,#099b9b);color:#fff;font-size:15px;font-weight:750;box-shadow:0 7px 18px #0886a833}
+.cta{flex:none;display:inline-flex;align-items:center;gap:8px;padding:14px 19px;border-radius:14px;background:linear-gradient(120deg,#087eae,#099b9b);color:#fff;font-size:15px;font-weight:750;box-shadow:0 7px 18px #0886a833;transition:filter .2s}
 .slide:hover .cta{filter:brightness(1.08)}
 .carousel-bottom{display:flex;align-items:center;justify-content:space-between;padding:0 30px 22px}
 .dots{display:flex;gap:8px}
-.dot{border:0;width:9px;height:9px;padding:0;border-radius:9px;background:#b7c8d6;cursor:pointer}
+.dot{border:0;width:9px;height:9px;padding:0;border-radius:9px;background:#b7c8d6;cursor:pointer;transition:all .3s}
 .dot[aria-current=true]{width:26px;background:#0787a5}
 .controls{display:flex;gap:10px}
-.controls button{width:39px;height:39px;border:1px solid #c8d9e8;border-radius:50%;background:#ffffffc9;color:#3b5e7b;font-size:20px;cursor:pointer}
+.controls button{width:39px;height:39px;border:1px solid #c8d9e8;border-radius:50%;background:#ffffffc9;color:#3b5e7b;font-size:20px;cursor:pointer;transition:all .2s}
 .controls button:hover{border-color:#0787a5;color:#0787a5;background:white}
+
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.link-card{min-width:0;display:flex;align-items:center;gap:13px;padding:19px 18px;border-radius:19px;border:1px solid #d7e4ee;background:#ffffffc9;text-decoration:none;box-shadow:0 7px 20px #315e870b;transition:transform .18s,border-color .18s,background .18s,box-shadow .18s}
+.link-card:hover{transform:translateY(-3px);border-color:#59b9c3;background:#fff;box-shadow:0 10px 24px rgba(8,126,174,0.12)}
+.link-icon{width:46px;height:46px;display:grid;place-items:center;flex:none;border-radius:15px;background:#e3f5f7;font-size:22px}
+.link-card b{display:block;font-size:16px}
+.link-card small{display:block;margin-top:4px;color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.arr{margin-left:auto;color:#0787a5;font-size:18px;transition:transform .2s}
+.link-card:hover .arr{transform:translateX(2px)}
+
 .notice{margin-top:34px;padding:25px 28px;border:1px solid #d8e5ef;border-radius:22px;background:#ffffffc9;box-shadow:0 10px 28px #315e870c;backdrop-filter:blur(12px)}
 .notice h2{margin:0 0 17px;font-size:19px}
 .rules{display:grid;gap:12px}
 .rule{display:flex;gap:12px;align-items:flex-start;color:#425a70;font-size:16px;line-height:1.7}
 .rule span:first-child{flex:none}
-.links{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.link-card{min-width:0;display:flex;align-items:center;gap:13px;padding:19px 18px;border-radius:19px;border:1px solid #d7e4ee;background:#ffffffc9;text-decoration:none;box-shadow:0 7px 20px #315e870b;transition:transform .18s,border-color .18s,background .18s}
-.link-card:hover{transform:translateY(-3px);border-color:#59b9c3;background:#fff}
-.link-icon{width:46px;height:46px;display:grid;place-items:center;flex:none;border-radius:15px;background:#e3f5f7;font-size:22px}
-.link-card b{display:block;font-size:16px}
-.link-card small{display:block;margin-top:4px;color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.arr{margin-left:auto;color:#0787a5;font-size:18px}
+
 footer{margin-top:46px;padding-top:21px;border-top:1px solid #d6e2ec;display:flex;align-items:center;justify-content:space-between;color:#788b9c;font-size:14px}
 .friend{color:#087eae;text-decoration:none}
 .friend:hover{text-decoration:underline}
@@ -90,18 +98,17 @@ footer{margin-top:46px;padding-top:21px;border-top:1px solid #d6e2ec;display:fle
 <body>
 <main class="wrap">
 
-  <!-- 顶部导航：右上角商城入口 -->
+  <!-- 顶部导航：左上角支持真实图片 LOGO -->
   <header class="top">
-    <a class="brand" href="#top" style="text-decoration:none">
-      <span class="brand-icon">mimy</span>米麦小卖部
+    <a class="brand" href="#top">
+      <span class="brand-icon">
+        <img src="logo.png" alt="mimy" onerror="this.style.display='none';this.parentNode.innerText='mimy';">
+      </span>
+      米麦小卖部
     </a>
 
-    <a class="pill"
-       href="https://www.mimy.uk/"
-       target="_blank"
-       rel="noopener noreferrer"
-       style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer">
-      🛍️ 商城入口 ↗
+    <a class="pill" href="https://www.mimy.uk/" target="_blank" rel="noopener noreferrer">
+      🛒 商城入口 ↗
     </a>
   </header>
 
@@ -112,6 +119,7 @@ footer{margin-top:46px;padding-top:21px;border-top:1px solid #d6e2ec;display:fle
     <span class="domain">🔖 建议收藏 ios.mimy.cc</span>
   </section>
 
+  <!-- 热销推荐 -->
   <section aria-labelledby="hot-title">
     <div class="section-title">
       <h2 id="hot-title">🔥 热销推荐</h2>
@@ -120,7 +128,6 @@ footer{margin-top:46px;padding-top:21px;border-top:1px solid #d6e2ec;display:fle
 
     <div class="carousel" id="carousel">
       <div class="track" id="track">
-
         <a class="slide" href="https://ios.mimyx.sbs/item/23" target="_blank" rel="noopener noreferrer">
           <div class="slide-copy">
             <span class="tag">🔥 人气推荐</span>
@@ -147,7 +154,6 @@ footer{margin-top:46px;padding-top:21px;border-top:1px solid #d6e2ec;display:fle
           </div>
           <span class="cta">立即查看 ↗</span>
         </a>
-
       </div>
 
       <div class="carousel-bottom">
@@ -165,15 +171,7 @@ footer{margin-top:46px;padding-top:21px;border-top:1px solid #d6e2ec;display:fle
     </div>
   </section>
 
-  <section class="notice" aria-labelledby="notice-title">
-    <h2 id="notice-title">🛡️ 使用须知</h2>
-    <div class="rules">
-      <div class="rule"><span>✅</span><span>仅供游戏下载 / 外区应用学习使用</span></div>
-      <div class="rule"><span>✅</span><span>请遵守平台官方规则规范使用</span></div>
-      <div class="rule"><span>❌</span><span>禁止用于违规违法用途</span></div>
-    </div>
-  </section>
-
+  <!-- 常用入口板块（优先显示） -->
   <section aria-labelledby="links-title">
     <div class="section-title">
       <h2 id="links-title">🧭 常用入口</h2>
@@ -201,6 +199,16 @@ footer{margin-top:46px;padding-top:21px;border-top:1px solid #d6e2ec;display:fle
     </div>
   </section>
 
+  <!-- 使用须知板块（次序放于常用入口下方） -->
+  <section class="notice" aria-labelledby="notice-title">
+    <h2 id="notice-title">🛡️ 使用须知</h2>
+    <div class="rules">
+      <div class="rule"><span>✅</span><span>仅供游戏下载 / 外区应用学习使用</span></div>
+      <div class="rule"><span>✅</span><span>请遵守平台官方规则规范使用</span></div>
+      <div class="rule"><span>❌</span><span>禁止用于违规违法用途</span></div>
+    </div>
+  </section>
+
   <footer>
     <span>🌾 MIMY © 2024</span>
     <a class="friend" href="https://go.mimy.cc" target="_blank" rel="noopener noreferrer">
@@ -211,57 +219,46 @@ footer{margin-top:46px;padding-top:21px;border-top:1px solid #d6e2ec;display:fle
 </main>
 
 <script>
-(()=>{
-  const track=document.getElementById('track');
-  const slides=[...track.children];
-  const dots=[...document.querySelectorAll('.dot')];
-  const carousel=document.getElementById('carousel');
-  let index=0,timer;
+(() => {
+  const track = document.getElementById('track');
+  const slides = [...track.children];
+  const dots = [...document.querySelectorAll('.dot')];
+  const carousel = document.getElementById('carousel');
+  let index = 0, timer;
 
-  function show(n){
-    index=(n+slides.length)%slides.length;
-    track.style.transform=`translateX(-${index*100}%)`;
-    dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===index)));
-  }
+  const show = (n) => {
+    index = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
+  };
 
-  function start(){
+  const start = () => {
     clearInterval(timer);
-    timer=setInterval(()=>show(index+1),4500);
-  }
+    timer = setInterval(() => show(index + 1), 4500);
+  };
 
-  document.getElementById('prev').addEventListener('click',()=>{
-    show(index-1);
-    start();
-  });
+  document.getElementById('prev').addEventListener('click', () => { show(index - 1); start(); });
+  document.getElementById('next').addEventListener('click', () => { show(index + 1); start(); });
+  dots.forEach((d, i) => d.addEventListener('click', () => { show(i); start(); }));
 
-  document.getElementById('next').addEventListener('click',()=>{
-    show(index+1);
-    start();
-  });
-
-  dots.forEach((d,i)=>d.addEventListener('click',()=>{
-    show(i);
-    start();
-  }));
-
-  carousel.addEventListener('mouseenter',()=>clearInterval(timer));
-  carousel.addEventListener('mouseleave',start);
-  carousel.addEventListener('focusin',()=>clearInterval(timer));
-  carousel.addEventListener('focusout',start);
+  carousel.addEventListener('mouseenter', () => clearInterval(timer));
+  carousel.addEventListener('mouseleave', start);
+  carousel.addEventListener('focusin', () => clearInterval(timer));
+  carousel.addEventListener('focusout', start);
 
   start();
 })();
 </script>
 
-<!-- Crisp 在线客服 -->
+<!-- Crisp 在线客服 SDK -->
 <script type="text/javascript">
-window.$crisp=[];
-window.CRISP_WEBSITE_ID="6fc577d2-f80b-43ec-b12c-9683d78e30c5";
+window.$crisp = [];
+window.CRISP_WEBSITE_ID = "6fc577d2-f80b-43ec-b12c-9683d78e30c5";
 (function(){
-  d=document;
-  s=d.createElement("script");
-  s.src="https://client.crisp.chat/l.js";
-  s.async=1;
+  const d = document;
+  const s = d.createElement("script");
+  s.src = "https://client.crisp.chat/l.js";
+  s.async = 1;
   d.getElementsByTagName("head")[0].appendChild(s);
 })();
 </script>
